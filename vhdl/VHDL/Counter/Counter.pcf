@@ -1,0 +1,17 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Wed Apr 13 22:31:39 2016
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "i_rst" LOCATE = SITE "D22" LEVEL 1;
+COMP "i_clk" LOCATE = SITE "U23" LEVEL 1;
+COMP "o_cnt<0>" LOCATE = SITE "AC22" LEVEL 1;
+COMP "o_cnt<1>" LOCATE = SITE "AC24" LEVEL 1;
+COMP "o_cnt<2>" LOCATE = SITE "AE22" LEVEL 1;
+COMP "o_cnt<3>" LOCATE = SITE "AE23" LEVEL 1;
+COMP "o_cnt<4>" LOCATE = SITE "AB23" LEVEL 1;
+COMP "o_cnt<5>" LOCATE = SITE "AG23" LEVEL 1;
+COMP "o_cnt<6>" LOCATE = SITE "AE24" LEVEL 1;
+COMP "o_cnt<7>" LOCATE = SITE "AD24" LEVEL 1;
+SCHEMATIC END;
+

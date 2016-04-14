@@ -1,0 +1,10 @@
+NET "i_clk" LOC = "U23";
+NET "i_rst" LOC = "D22";
+NET "o_cnt<0>" LOC = "AC22";
+NET "o_cnt<1>" LOC = "AC24";
+NET "o_cnt<2>" LOC = "AE22";
+NET "o_cnt<3>" LOC = "AE23";
+NET "o_cnt<4>" LOC = "AB23";
+NET "o_cnt<5>" LOC = "AG23";
+NET "o_cnt<6>" LOC = "AE24";
+NET "o_cnt<7>" LOC = "AD24";

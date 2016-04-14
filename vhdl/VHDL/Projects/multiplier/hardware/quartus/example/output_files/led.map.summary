@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Wed Apr 06 22:17:56 2016
+Quartus II 64-Bit Version : 14.1.0 Build 186 12/03/2014 SJ Full Version
+Revision Name : led
+Top-level Entity Name : led
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 24
+Total pins : 4
+Total virtual pins : 0
+Total block memory bits : 0
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0
