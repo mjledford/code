@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\AFIT\Documents\VHDL\Counter\Counter.ncd
+OUTFILE=C:\Users\AFIT\Documents\VHDL\Counter\Counter.bit
+FAMILY=Virtex6
+PART=xc6vlx240t-2ff1156
+WORKINGDIR=C:\Users\AFIT\Documents\VHDL\Counter
+LICENSE=ISE
+USER_INFO=174209637_207303925_210592579_868

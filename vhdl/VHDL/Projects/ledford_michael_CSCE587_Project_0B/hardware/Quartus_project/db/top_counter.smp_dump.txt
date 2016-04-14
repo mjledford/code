@@ -1,0 +1,8 @@
+
+State Machine - |top_counter|debouncerv2:deb|s_current_state
+Name s_current_state.deassert s_current_state.assertout s_current_state.check_high s_current_state.waiting s_current_state.idle 
+s_current_state.idle 0 0 0 0 0 
+s_current_state.waiting 0 0 0 1 1 
+s_current_state.check_high 0 0 1 0 1 
+s_current_state.assertout 0 1 0 0 1 
+s_current_state.deassert 1 0 0 0 1 

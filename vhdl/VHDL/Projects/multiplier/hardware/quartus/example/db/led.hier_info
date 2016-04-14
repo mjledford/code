@@ -1,0 +1,37 @@
+|led
+i_clk => debouncerv2:deb.i_clk
+i_rst => comb.IN1
+i_rst => o_out.IN1
+i_rst => comb.IN1
+i_in => debouncerv2:deb.i_db
+o_out <= o_out$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|led|debouncerv2:deb
+i_db => p_debouncer.IN1
+i_db => Selector3.IN4
+i_db => f_db.DATAIN
+i_db => Selector0.IN4
+i_clk => f_deb.CLK
+i_clk => f_count[0].CLK
+i_clk => f_count[1].CLK
+i_clk => f_count[2].CLK
+i_clk => f_count[3].CLK
+i_clk => f_count[4].CLK
+i_clk => f_count[5].CLK
+i_clk => f_count[6].CLK
+i_clk => f_count[7].CLK
+i_clk => f_count[8].CLK
+i_clk => f_count[9].CLK
+i_clk => f_count[10].CLK
+i_clk => f_count[11].CLK
+i_clk => f_count[12].CLK
+i_clk => f_count[13].CLK
+i_clk => f_count[14].CLK
+i_clk => f_count[15].CLK
+i_clk => f_count[16].CLK
+i_clk => f_db.CLK
+i_clk => s_current_state~6.DATAIN
+o_pb <= f_deb.DB_MAX_OUTPUT_PORT_TYPE
+
+
