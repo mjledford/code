@@ -204,10 +204,15 @@ for w=1:ProDial.Blocks
         Pro.SW.PhiErr(Pro.SW.Counter) = atan(Pro.SW.Q(Pro.SW.Counter)/Pro.SW.I(Pro.SW.Counter))*RAD2DEG;
     end
     
-    %% frequency discriminator
-    
+    %% frequency discriminator 
+    %code gets executed because of rem(w,ProDial.Pdi)
+    if( m > 1 ) %more than one integration period has been processed
+        dot = Pro.SW.I(m)*Pro.SW.I(m-1) + Pro.SW.Q(m)*Pro.SW.Q(m-1);
+        cross = Pro.SW.I(m)*Pro.SW.Q(m-1) - Pro.SW.I(m-1)*Pro.SW.Q(m);
+        Pro.SW.Ferr(Pro.SW.Counter) = atan2(cross,dot)/ProDial.Pdi;
+    end
     if rem(w,ProDial.PAdi)==0 %PAdi is post-detection integration
-     %dot = Pro.SW.I(n 
+     
       
       
       %% Collect data for Adi-update plotting
@@ -262,17 +267,17 @@ if PlotHwCorrIq.Enable || PlotHwCorrAngle.Enable
      plot(TimeVecHw,Pro.HW.I, 'k'); hold on;
      plot(TimeVecHw,Pro.HW.Q, 'g');
      plot(TimeVecHw,Pro.HW.Mag,'r'); hold off;
-     title(sprintf('Hardware Correlator I,Q, and Mag Plot for %d blocks', ProDial.Blocks))
-     xlabel('Time(s)');
-     ylabel('Correlator Output');
+     title(sprintf('Hardware Correlator Output, Pdi=%d, Blocks=%d',ProDial.Pdi, ProDial.Blocks))
+     xlabel('Time [Sec] ');
+     ylabel('HW Correlator Output');
      legend('HW Corr I', 'HW Corr Q', 'HW Corr Mag')
   end
   if(PlotHwCorrAngle.Enable == 1)
       figure;
       plot(TimeVecHw, Pro.HW.Angle);
-      title('Hardware Correlator Angle Plot')
-      xlabel('Time(s)');
-      ylabel('Angle(degrees)');
+      title(sprintf('Hardware Correlator Angle, Pdi=%d, Blocks=%d', ProDial.Pdi,ProDial.Blocks))
+      xlabel('Time [Sec]');
+      ylabel('Phaser Angle [Deg]');
   end
 end
 %Plot SW Correlator
@@ -283,17 +288,17 @@ if PlotSwCorrIq.Enable || PlotSwCorrAngle.Enable
      plot(TimeVecSw,Pro.SW.I, 'k'); hold on;
      plot(TimeVecSw,Pro.SW.Q, 'g');
      plot(TimeVecSw,Pro.SW.Mag,'r'); hold off;
-     title(sprintf('Software Correlator I,Q, and Mag Plot for %d blocks', ProDial.Blocks))
-     xlabel('Time(s)');
-     ylabel('Correlator Output');
+     title(sprintf('Software Correlator Output Pdi=%d, Blocks=%d', ProDial.Pdi, ProDial.Blocks))
+     xlabel('Time [Sec]');
+     ylabel('SW Correlator Output');
      legend('SW Corr I', 'SW Corr Q', 'SW Corr Mag')
   end
   if(PlotSwCorrAngle.Enable == 1)
       figure;
       plot(TimeVecSw, Pro.SW.Angle);
-      title('Software Correlator Angle Plot')
-      xlabel('Time(s)');
-      ylabel('Angle(degrees)');
+      title(sprintf('Software Correlator Angle,Pdi=%d, Blocks=%d',ProDial.Pdi, ProDial.Blocks))
+      xlabel('Time [Sec]');
+      ylabel('Phaser Angle [Deg]');
   end
 end
 % Plot Descriminators
@@ -302,12 +307,18 @@ if PlotPdiscr.Enable || PlotFdiscr.Enable
     TimeVecPd=Tsw*(0:(ProDial.Blocks/ProDial.Pdi-1));
     plot(TimeVecPd, Pro.SW.PhiErr);
     if (ProDial.PDiscrType == 1) %Use Costas title
-        title('Costas PLL Phase Discriminator'); 
+        title(sprintf('Phase Discriminator Output (Type:Costas), Pdi=%d, Blocks=%d',ProDial.Pdi,ProDial.Blocks)); 
     else
-        title('Pure PLL Phase Discriminator');
+        title(sprintf('Phase Discriminator Output (Type:Pure), Pdi=%d, Blocks=%d',ProDial.Pdi,ProDial.Blocks));
     end
-    xlabel('Time(s)');
-    ylabel('Phase Error (degrees)');
+    xlabel('Time [Sec]');
+    ylabel('Phase Error [Deg]');
+    %Plot Freq. Discr.
+    figure;
+    plot(TimeVecPd, Pro.SW.Ferr);
+    title(sprintf('Frequency Discriminator Output, Pdi=%d, Blocks=%d',ProDial.Pdi,ProDial.Blocks));
+    xlabel('Time [Sec]');
+    ylabel('Estimated Frequency [Hz]');
 end
 % Adi updated plots
 % if Adi.Collect
